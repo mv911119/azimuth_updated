@@ -1,8 +1,8 @@
 Package: Azimuth
 Type: Package
 Title: A Shiny App Demonstrating a Query-Reference Mapping Algorithm for Single-Cell Data
-Version: 0.5.0
-Date: 2023-04-06
+Version: 0.5.1
+Date: 2025-01-15
 Authors@R: c(
   person(given = 'Andrew', family = 'Butler', email = 'abutler@nygenome.org', role = 'aut', comment = c(ORCID = '0000-0003-3608-0463')),
   person(given = "Charlotte", family = "Darby", email = "cdarby@nygenome.org", role = "aut", comment = c(ORCID = "0000-0003-2195-5300")),
@@ -12,7 +12,8 @@ Authors@R: c(
   person(given = "Jaison", family = "Jain", email = "jjain@nygenome.org", role = "ctb", comment = c(ORCID = "0000-0002-9478-5018")),
   person(given = "Gesmira", family = "Molla", email = 'gmolla@nygenome.org', role = 'aut', comment = c(ORCID = '0000-0002-8628-5056')),
   person(given = "Rahul", family = "Satija", email = "rsatija@nygenome.org", role = "aut", comment = c(ORCID = "0000-0001-9448-8833")),
-  person("Satija Lab and Collaborators", role = "fnd")
+  person("Satija Lab and Collaborators", role = "fnd"),
+  person(given = "Wei", family = "Meng", email = "wei.meng@ki.se")
   )
 Description: Azimuth uses an annotated reference dataset to automate the processing, analysis, and interpretation of a new single-cell RNA-seq or ATAC-seq experiment. Azimuth leverages a 'reference-based mapping' pipeline that inputs a counts matrix and performs normalization, visualization, cell annotation, and differential expression (biomarker discovery). 
 URL: https://github.com/satijalab/azimuth
