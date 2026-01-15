@@ -103,7 +103,7 @@ ConvertGeneNames <- function(object, reference.names, homolog.table) {
     new.indices <- new.indices[notdup]
     new.names <- new.names[notdup]
     # subset/rename object accordingly
-    counts <- GetAssayData(object = object[["RNA"]], slot = "counts")[rownames(x = object)[new.indices], ]
+    counts <- GetAssayData(object = object[["RNA"]], layer = "counts")[rownames(x = object)[new.indices], ]
     rownames(x = counts) <- new.names
     reductions <- slot(object = object, name = "reductions")
     object <- CreateSeuratObject(
@@ -309,21 +309,21 @@ LoadFileInput <- function(path, bridge = FALSE) {
         if (isTRUE(x = bridge)){
           if (!'ATAC' %in% Assays(object = object)) {
             stop("No ATAC assay provided", call. = FALSE)
-          } else if (Seurat:::IsMatrixEmpty(x = GetAssayData(object = object, slot = 'counts', assay = 'ATAC'))) {
+          } else if (Seurat:::IsMatrixEmpty(x = GetAssayData(object = object, layer = 'counts', assay = 'ATAC'))) {
             stop("No ATAC counts matrix present", call. = FALSE)
           }
           assay <- "ATAC"
         } else{
           if (!'RNA' %in% Assays(object = object)) {
             stop("No RNA assay provided", call. = FALSE)
-          } else if (Seurat:::IsMatrixEmpty(x = GetAssayData(object = object, slot = 'counts', assay = 'RNA'))) {
+          } else if (Seurat:::IsMatrixEmpty(x = GetAssayData(object = object, layer = 'counts', assay = 'RNA'))) {
             stop("No RNA counts matrix present", call. = FALSE)
           }
           assay <- "RNA"
         }
         object <- tryCatch({
           CreateSeuratObject(
-            counts = GetAssayData(object = object[[assay]], slot = "counts"),
+            counts = GetAssayData(object = object[[assay]], layer = "counts"),
             min.cells = 1,
             min.features = 1,
             meta.data = object[[]]
@@ -331,7 +331,7 @@ LoadFileInput <- function(path, bridge = FALSE) {
         }, error = function(e){
           object <- UpdateSeuratObject(object)
           CreateSeuratObject(
-            counts = GetAssayData(object = object[[assay]], slot = "counts"),
+            counts = GetAssayData(object = object[[assay]], layer = "counts"),
             min.cells = 1,
             min.features = 1,
             meta.data = object[[]]
@@ -388,7 +388,7 @@ LoadFileInput <- function(path, bridge = FALSE) {
         }
       }
       object <- CreateSeuratObject(
-        counts = GetAssayData(object = object[[assay]], slot = "counts"),
+        counts = GetAssayData(object = object[[assay]], layer = "counts"),
         min.cells = 1,
         min.features = 1,
         meta.data = object[[]]
